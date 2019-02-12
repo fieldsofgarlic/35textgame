@@ -8,6 +8,7 @@ Verbs:
 * use
 * eat
 * insert
+* pick
 
 Nouns:
 * cable
@@ -26,7 +27,9 @@ Nouns:
 * machine
 * light
 * switch
-* Cabinet
+* cabinet
+* paperclip
+* lock
 
 Directions
 * n
