@@ -1,0 +1,22 @@
+get cable,plug,phone,key,flashlight,schedule,binder,flyer,snacks,book,powerbank,charger,paperclip
+open door,binder,book,cabinet
+pick lock
+look up,down
+go n,s,e,w,u,d,up,down,north,south,east,west
+activate robot,flashlight,phone,light
+connect+to plug,phone,cable,powerpack
+use phone,flashlight,paperclip,machine,key,charger
+eat snacks
+insert key
+n
+s
+e
+w
+u
+d
+north
+south
+east
+west
+up
+down
