@@ -1,14 +1,20 @@
-Primary Locations:
-	Cafeteria 
-	Ms. Crier's Room
-	Ms. Allen Room
-	Mr. Baptiste Engineering Room
-	Black Box Theater
-	Library
-	Outside Bus Locations
+syntax:location, direction(nsewud), desc, item
+++++++++++++++++++
+Second Floor:
+baptiste / ,2nbaptiste,,,, / This looks like Mr. Baptiste's room. Smells like hot sausage! There's also a flyer on the floor. / flyer
 
-Minor Locations:
-	Athletic Hallway
-	Hallways
-	Main Stairway
-	Front 
+2nbaptiste / baptiste,,2nturn,,, / In the middle of the North hallway, a classroom door is left ajar. It faces north. /
+ 
+2nturn / ,2stairs,,2nbaptiste,, / You're at a turn. One way leads to the stairs the other leads down a hallway. / 
+
+2stairs / 2nturn,2sturn,,,3stairs,1stairs / In between the North and South hallways are the stairs. They go up a floor and down a floor. /
+
+2sturn / 2stairs,,,2smid,, / You're at a turn. The stairs leads North and the hallway leads West. /
+
+2smid / ,2counselorturn,2sturn,,, / In the middle of the South hallway, the entrance to the counselor's suite faces South. /
+
+2scounselorturn / 2smid,,2scounselorspreter,,, /Your inside the counselor's suite. Offices line up to the east  /
+
+2scounselorspreter / ,spreter,,2scounselorturn,, / You're in front a counselor's office that proceeds South. /
+
+spreter /2scounselorspreter,,,,, / This looks like Mrs. Spreter's office. Why do I feel the need to complete my FAFSA? A cable lies on the floor. / cable
