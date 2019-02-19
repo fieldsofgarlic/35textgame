@@ -1,3 +1,12 @@
+const directions = {
+  n: "north",
+  s: "south",
+  e: "east",
+  w: "west",
+  u: "up",
+  d: "down"
+};
+
 function readFile ( file ) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -14,6 +23,9 @@ function parseLocations ( data ) {
   const lines = data.split( "\n" );
   for ( let i = 0; i < lines.length; i ++ ) {
     const fields = lines[ i ].split( "\t" );
+    if ( typeof fields[ 3 ] === "undefined" ) {
+      fields[ 3 ] = "";
+    }
     const destinations = fields[ 1 ].split( "," );
     const items = fields[ 3 ].split( "," );
     locationDb[ fields[ 0 ] ] = {
@@ -28,5 +40,18 @@ function parseLocations ( data ) {
       description : fields[ 2 ],
       items : items
     };
+  }
+  return locationDb;
+}
+
+function move ( locDb, direction ) {
+  const dir = direction.slice( 0, 1 );
+  const newLocation = locDb[ locDb.current ].destinations[ dir ];
+  if ( newLocation === "" ) {
+    return "You can't go " + direction + " from here.";
+  }
+  else {
+    locDb.current = newLocation;
+    return locDb[ newLocation ].description;
   }
 }
