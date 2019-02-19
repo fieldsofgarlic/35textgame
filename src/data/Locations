@@ -24,9 +24,11 @@ library	,,1libaryw,,,	You are in the library.	book,key
 1allen	1libarye,,allen,,,	You are in the hall outside Ms. Allen’s office.
 allen	,,,1allen,,	You are in Ms. Allen’s office. You have never seen so many snacks.	food
 crier	3ncrier,,,,,	You are in Ms. Crier’s room. There is a cabinet in the corner. On the floor is a large binder. 	binder,schedule,cabinet
-3ncrier	,crier,3nturn,,	You are standing in the middle of the hallway.
-3nturn	,3stairs,3ncrier,3stairs	You are st s turn in hte hallway where it goes east and south. 
-3stairs	3stairs,,3smide,2stairs	You are standing outside the main staiway on the third floor.
-3smide	,,3stairs3smide,,	You are standing in the right side of the hallway. 
-3smide	,,3smide3srobinson,,	You are standing in the left side of the hallway.
+3ncrier	,crier,3nturn,,,	You are standing in the middle of the hallway.
+3nturn	,3stairs,,3ncrier,,	You are at a turn in the hallway where it goes east and south. 
+3sturn	3stairs,,,3smide,,	You are at a turn in the hallway where it goes east and north. 
+3stairs	3nturn,3sturn,,,,2stairs	You are standing outside the main staiway on the third floor.
+3smide	,,3sturn,3smidw,,	You are standing in the right side of the hallway. 
+3smidw	,,3smide,3srobinson,,	You are standing in the left side of the hallway.
 robinson	,,3smide,,,	You are in Mr. Robinson’s room. There is a flashlight on the desk. There is a phone on the floor.	flashlight,phone
+3srobinson	robinson,,3smidw,,,	You are standing in the hall outside of a classroom.
