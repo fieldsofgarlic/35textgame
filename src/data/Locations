@@ -25,8 +25,8 @@ library	,,1libaryw,,,	You are in the library.	book,key
 allen	,,,1allen,,	You are in Ms. Allen’s office. You have never seen so many snacks.	food
 crier	3ncrier,,,,,	You are in Ms. Crier’s room. There is a cabinet in the corner. On the floor is a large binder. 	binder,schedule,cabinet
 3ncrier	,crier,3nturn,,	You are standing in the middle of the hallway.
-3nturn	,3stairs,3ncrier,3stairs	You are on the higher staircase. 
-3stairs	3stairs,,3smide,2stairs	You are standing on the lower staircase.
+3nturn	,3stairs,3ncrier,3stairs	You are st s turn in hte hallway where it goes east and south. 
+3stairs	3stairs,,3smide,2stairs	You are standing outside the main staiway on the third floor.
 3smide	,,3stairs3smide,,	You are standing in the right side of the hallway. 
 3smide	,,3smide3srobinson,,	You are standing in the left side of the hallway.
 robinson	,,3smide,,,	You are in Mr. Robinson’s room. There is a flashlight on the desk. There is a phone on the floor.	flashlight,phone
