@@ -55,3 +55,37 @@ function move ( locDb, direction ) {
     return locDb[ newLocation ].description;
   }
 }
+
+
+function handleInput (input, grammar) {
+  let output = "> " + input.value + "<br/>";
+  output += interpreter( input.value, grammar ) + "<br/>";
+  input.value = "";
+  return output;
+}
+
+function interpreter (cmd, grammar) {
+  cmd = cmd.toLowerCase().trim();
+  let words = cmd.split( /\s+/ );
+  if ( words[0] in grammar ) {
+    
+  }
+  else {
+    return "I don't know how to " + words[0] + ".";
+  }
+  return "you want to " + words[0] + "  a " + words[1];
+}
+
+function parseGrammar (data) {
+  grammarDb = {};
+  const lines = data.split( "\n" );
+  for ( let i = 0; i < lines.length; i ++ ) {
+    const fields = lines[ i ].split( "\s" );
+    if ( typeof fields[ 1 ] === "undefined" ) {
+      fields[ 1 ] = "";
+    }
+    const nouns = fields[ 1 ].split( "," );
+    grammarDb[ fields[ 0 ] ] = nouns;
+  }
+  return grammarDb;
+}
