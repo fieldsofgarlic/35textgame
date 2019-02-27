@@ -3,11 +3,23 @@
   <head>
     <script type="text/javascript" src="helpers.js"></script>
     <script type="text/javascript">
-      const locDb = parseLocations( readFile( "/data/locations" ) );
-      console.log( locDb );
+      //const locDb = parseLocations( readFile( "/data/locations" ) );
+      //const grammar = parseGrammar( grammarData );
+      // need to put this in an init function
+      const command = document.getElementById("command");
+      var cons = document.getElementById("console");
+
+      command.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+          //alert("hi");
+          event.preventDefault();
+          cons.innerHTML += handleInput(command, grammar);
+        }
+      });
     </script>
   </head>
   <body>
-    Hi!
+   <div id="commandContainer">Now what? <input id="command"/></div>
+   <div id="comsole"></div> 
   </body>
 </html>
