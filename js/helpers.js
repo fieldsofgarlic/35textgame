@@ -19,7 +19,7 @@ function readFile ( file ) {
 }
 
 function parseLocations ( data ) {
-  locationDb = {};
+  let locationDb = {};
   const lines = data.split( "\n" );
   for ( let i = 0; i < lines.length; i ++ ) {
     const fields = lines[ i ].split( "\t" );
@@ -67,25 +67,30 @@ function handleInput (input, grammar) {
 function interpreter (cmd, grammar) {
   cmd = cmd.toLowerCase().trim();
   let words = cmd.split( /\s+/ );
+  console.log( grammar );	
   if ( words[0] in grammar ) {
     
   }
   else {
     return "I don't know how to " + words[0] + ".";
   }
-  return "you want to " + words[0] + "  a " + words[1];
+  return "You want to " + words[0] + "  a " + words[1] + ".";
 }
 
 function parseGrammar (data) {
-  grammarDb = {};
+  let grammarDb = {};
   const lines = data.split( "\n" );
   for ( let i = 0; i < lines.length; i ++ ) {
-    const fields = lines[ i ].split( "\s" );
+    const fields = lines[ i ].split( /\s/ );
+    const verbParts = fields[ 0 ].split("+");	  
     if ( typeof fields[ 1 ] === "undefined" ) {
       fields[ 1 ] = "";
     }
     const nouns = fields[ 1 ].split( "," );
-    grammarDb[ fields[ 0 ] ] = nouns;
+    grammarDb[ verbParts[ 0 ] ] = {
+      nouns : nouns, 
+      followUp : verbParts[ 1 ]
+    };
   }
   return grammarDb;
 }

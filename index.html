@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script type="text/javascript" src="helpers.js"></script>
+    <meta charset="UTF-8">	  
+    <script type="text/javascript" src="js/db.js"></script>
+    <script type="text/javascript" src="js/helpers.js"></script>
     <script type="text/javascript">
-      //const locDb = parseLocations( readFile( "/data/locations" ) );
-      //const grammar = parseGrammar( grammarData );
-      // need to put this in an init function
-      const command = document.getElementById("command");
-      var cons = document.getElementById("console");
+let locations, grammar, command;
+var cons;
+
+function init (){
+      locations = parseLocations( locationDb );
+      grammar = parseGrammar( grammarDb );
+      command = document.getElementById("command");
+      cons = document.getElementById("console");
 
       command.addEventListener("keyup", function(event) {
         if (event.keyCode === 13) {
           //alert("hi");
           event.preventDefault();
-          cons.innerHTML += handleInput(command, grammar);
+          cons.innerHTML = handleInput(command, grammar) + cons.innerHTML;
         }
       });
+}
+
+window.onload = init;
     </script>
   </head>
   <body>
    <div id="commandContainer">Now what? <input id="command"/></div>
-   <div id="comsole"></div> 
+   <div id="console"></div> 
   </body>
 </html>
