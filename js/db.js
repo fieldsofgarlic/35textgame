@@ -1,13 +1,24 @@
-const grammarDb = `get cable,plug,phone,key,flashlight,schedule,binder,flyer,snacks,book,powerbank,charger,paperclip
-open door,binder,book,cabinet
-pick lock
-look up,down
-go n,s,e,w,u,d,up,down,north,south,east,west
-activate robot,flashlight,phone,light
-connect+to plug,phone,cable,powerpack
-use phone,flashlight,paperclip,machine,key,charger
-eat snacks
-insert key
+/* grammarDb syntax key:
+   ,   valid noun delimiter
+   _   verb requires presence in location; usage removes from location and adds to inventory
+   :   verb requires noun to be in possession
+   #   verb requires noun to be present
+   ^   "noun" is a direction
+   +   follow-up preposition
+   ()  valid follow-up options, which lead to description changes in inventory
+   |   follow-up options delimiter
+*/
+
+const grammarDb = `get _cable,_plug,_phone,_key,_flashlight,_schedule,_binder,_flyer,_snacks,_book,_powerbank,_charger,_paperclip
+open #door,:binder,:book,#cabinet
+pick #lock
+look :schedule,:binder,:flyer,:book,:powerbank:
+go ^n,^s,^e,^w,^u,^d,^up,^down,^north,^south,^east,^west
+activate #robot,:flashlight,:phone,#light
+connect+to :plug(:cable|#outlet),:phone(:cable),:cable(:plug|:phone|:powerpack),:powerpack(:cable),#outlet(:plug)
+use :phone,:flashlight,:paperclip,:machine,:key,:charger
+eat :snacks
+insert :key
 n
 s
 e
@@ -21,6 +32,9 @@ west
 up
 down`;
 
+const responseDb = `look+schedule It's a schedule of classes: Period 1A with Mr. Crier in Room 3011, Period 2A with XXXXX in Room XXXXX, Period 3A with XXXXX in Room XXXXX, Period 4A in Room XXXXX.
+open+binder A schedule falls out and lands under a desk.
+look+* It is a completely normal NOUN.`;
 
 const locationDb = `baptiste	,2nbaptiste,,,,	This looks like Mr. Baptiste's room. Smells like hot sausage! There's also a flyer on the floor.	flyer
 2nbaptiste	baptiste,,2nturn,,,	In the middle of the North hallway, a classroom door is left ajar. It faces north.
