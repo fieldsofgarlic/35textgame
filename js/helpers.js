@@ -47,7 +47,6 @@ function move ( locDb, direction ) {
   }
 }
 
-
 function handleInput (input, grammar) {
   let output = "> " + input.value + "<br/>";
   output += interpreter( input.value, grammar ) + "<br/>";
@@ -68,6 +67,36 @@ function interpreter (cmd, grammar) {
   return "You want to " + words[0] + "  a " + words[1] + ".";
 }
 
+/* grammarDb syntax key:
+   ,   valid noun delimiter
+   _   verb requires moveable noun to be present; usage removes from location and adds to inventory
+   :   verb requires moveable noun to be in possession
+   #   verb requires immovable noun to be present
+   ^   "noun" is a direction
+   +   follow-up preposition
+   ()  valid follow-up options, which lead to description changes in inventory
+   |   follow-up options delimiter
+*/
+
+function nounTokenParser( rawNoun ) {
+  const token = rawNoun.slice( 0, 1 );
+  const noun = rawNoun.slice( 1 );
+  if ( noun.match( /\(/ ) ) {
+    // handle follow-up options
+    return {
+      noun : noun,
+      condition : "FU",
+      options = noun.split( "(" )[ 1 ].slice( 0, -1 ).split( "|" ).map( nounTokenParser )
+    };
+  }
+  else {
+    return {
+      noun : noun,
+      condition : token
+    };
+  }
+}
+
 function parseGrammar (data) {
   let grammarDb = {};
   const lines = data.split( "\n" );
@@ -77,7 +106,7 @@ function parseGrammar (data) {
     if ( typeof fields[ 1 ] === "undefined" ) {
       fields[ 1 ] = "";
     }
-    const nouns = fields[ 1 ].split( "," );
+    const nouns = fields[ 1 ].split( "," ).map( nounTokenParser );
     grammarDb[ verbParts[ 0 ] ] = {
       nouns : nouns, 
       followUp : verbParts[ 1 ]
