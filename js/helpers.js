@@ -86,7 +86,7 @@ function nounTokenParser( rawNoun ) {
     return {
       noun : noun,
       condition : "FU",
-      options = noun.split( "(" )[ 1 ].slice( 0, -1 ).split( "|" ).map( nounTokenParser )
+      options : noun.split( "(" )[ 1 ].slice( 0, -1 ).split( "|" ).map( nounTokenParser )
     };
   }
   else {
