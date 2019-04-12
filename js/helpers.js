@@ -48,6 +48,7 @@ function move ( locDb, direction ) {
 }
 
 function handleInput (input, grammar) {
+  console.log( grammar );
   let output = "> " + input.value + "<br/>";
   output += interpreter( input.value, grammar ) + "<br/>";
   input.value = "";
