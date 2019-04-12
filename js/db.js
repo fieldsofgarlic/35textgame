@@ -70,3 +70,12 @@ crier	3ncrier,,,,,	You are in Ms. Crier’s room. There is a cabinet in the corn
 3smidw	,,3smide,3srobinson,,	You are standing in the left side of the hallway.
 robinson	,,3smide,,,	You are in Mr. Robinson’s room. There is a flashlight on the desk. There is a phone on the floor.	flashlight,phone
 3srobinson	robinson,,3smidw,,,	You are standing in the hall outside of a classroom.`;
+
+const directions = {
+  n: "north",
+  s: "south",
+  e: "east",
+  w: "west",
+  u: "up",
+  d: "down"
+};
