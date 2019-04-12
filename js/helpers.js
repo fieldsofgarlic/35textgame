@@ -1,12 +1,3 @@
-const directions = {
-  n: "north",
-  s: "south",
-  e: "east",
-  w: "west",
-  u: "up",
-  d: "down"
-};
-
 function readFile ( file ) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
