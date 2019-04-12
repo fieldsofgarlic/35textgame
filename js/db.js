@@ -1,13 +1,20 @@
 /* grammarDb syntax key:
    ,   valid noun delimiter
-   _   verb requires presence in location; usage removes from location and adds to inventory
-   :   verb requires noun to be in possession
-   #   verb requires noun to be present
+   _   verb requires moveable noun to be present; usage removes from location and adds to inventory
+   :   verb requires moveable noun to be in possession
+   #   verb requires immovable noun to be present
    ^   "noun" is a direction
    +   follow-up preposition
    ()  valid follow-up options, which lead to description changes in inventory
    |   follow-up options delimiter
 */
+
+const actionTokens = {
+  "_" : "PM", // moveable noun must be present and action upon it removes from location and add to inventory
+  ":" : "PO", // moveable noun must be in possession
+  "#" : "PI", // immovable noun must be present
+  "^" : "DI"  // "noun" is direction
+}
 
 const grammarDb = `get _cable,_plug,_phone,_key,_flashlight,_schedule,_binder,_flyer,_snacks,_book,_powerbank,_charger,_paperclip
 open #door,:binder,:book,#cabinet
